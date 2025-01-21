@@ -1,0 +1,24 @@
+{
+  "name": "meraki-test",
+  "version": "1.0.0",
+  "description": "Test Development Store for Application",
+  "homepage": "https://github.com/alejodieguez1/meraki-test#readme",
+  "bugs": {
+    "url": "https://github.com/alejodieguez1/meraki-test/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alejodieguez1/meraki-test.git"
+  },
+  "license": "ISC",
+  "author": "Alejo Dieguez",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "tailwindcss": "^3.4.17",
+    "yarn": "^1.22.22"
+  }
+}
