@@ -9,25 +9,24 @@ class ProductItem extends HTMLElement {
     this.addEventListener("click", (e) => {
       const buttonOpen = e.target.closest("[data-button='quickview']");
       const buttonClose = e.target.closest("[data-modal='close']");
+      const modal = this.querySelector("[data-modal]");
 
       if (buttonOpen) {
-        this.handleModalOpen();
+        this.handleModalOpen(modal);
       }
 
       if (buttonClose) {
-        this.handleModalClose();
+        this.handleModalClose(modal);
       }
     });
   }
 
-  handleModalOpen() {
-    const modal = this.querySelector("[data-modal]");
+  handleModalOpen(modal) {
     modal.classList.add("active");
     this.body.classList.add("overflow-hidden");
   }
 
-  handleModalClose() {
-    const modal = this.querySelector("[data-modal]");
+  handleModalClose(modal) {
     modal.classList.remove("active");
     this.body.classList.remove("overflow-hidden");
   }
