@@ -1,0 +1,53 @@
+{% liquid
+  assign selected_collection = collection
+  if section.settings.collection != blank
+    assign selected_collection = section.settings.collection
+  endif
+%}
+
+
+<div class="site-container grid content-start gap-5">
+  <div class="py-10">
+    <h2 class="text-xl lg:text-3xl mx-auto w-fit">{{ selected_collection.title }}</h2>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 py-10 lg:pb-20">
+    {% for product in selected_collection.products
+      , limit: section.settings.limit %}
+      {% render 'product-item'
+        , product: product
+        , quickview: section.settings.quickview %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Product Grid",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection",
+        "label": "Choose A Collection"
+      }, {
+        "type": "number",
+        "id": "limit",
+        "label": "Products To Display"
+      }, {
+        "type": "checkbox",
+        "id": "quickview",
+        "label": "Enable Quick View"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product Grid",
+        "settings": {
+          "limit": 4,
+          "quickview": true,
+          "collection": "vans"
+        }
+      }
+    ]
+  }
+{% endschema %}

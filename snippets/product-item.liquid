@@ -1,0 +1,48 @@
+<product-item>
+  <div class="border border-black rounded-lg lg:rounded-xl h-full overflow-hidden pb-7">
+    <div class="grid h-full">
+      <a href="{{ product.url }}">
+        <img
+          src="{{ product.featured_image | image_url }}"
+          alt=""
+          width="auto"
+          height="auto">
+      </a>
+      <div class="px-3 lg:px-5 pt-5 border-t border-black grid content-between h-full gap-5">
+        <a href="{{ product.url }}">
+          <h3 class="text-center lg:text-left">
+            {{ product.title }}
+          </h3>
+        </a>
+        {% unless quickview == false %}
+          <button class="button" data-button="quickview">Quick View</button>
+        {% else %}
+          <button class="button" data-button="atc">Add to Cart - {{ product.price | money_without_trailing_zeros }}</button>
+        {% endunless %}
+      </div>
+    </div>
+  </div>
+
+  <div data-modal class="w-screen h-screen fixed grid z-10 left-0 right-0 top-0 bottom-0 invisible opacity-0 modal transition-all duration-300">
+    <div class="w-[90%] h-[90%] sm:w-[600px] lg:w-[600px] sm:h-[90%] m-auto pt-10 bg-white relative z-20 rounded-xl grid">
+      <a href="{{ product.url }}">
+        <img
+          src="{{ product.featured_image | image_url }}"
+          alt=""
+          width="auto"
+          height="auto">
+      </a>
+      <div class="grid content-start h-full gap-5 border-t border-black p-6">
+        <a href="{{ product.url }}">
+          <h3>
+            {{ product.title }}
+          </h3>
+          <p>{{ product.price | money_without_trailing_zeros }}</p>
+        </a>
+        <butto class="button">Add To Cart</butto>
+      </div>
+      <button data-modal="close" class="absolute top-3 right-3">{% render 'icon-close' %}</button>
+    </div>
+    <button data-modal="close" class="bg-black opacity-50 w-screen h-screen top-0 left-0 right-0 bottom-0 absolute z-10"></button>
+  </div>
+</product-item>

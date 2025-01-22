@@ -12,9 +12,9 @@
   },
   "license": "ISC",
   "author": "Alejo Dieguez",
-  "type": "commonjs",
-  "main": "index.js",
   "scripts": {
+    "dev": "shopify theme dev --store ubpcfw-9f & npx tailwindcss -i ./tailwind.style.css -o ./assets/tailwind.style.css --watch",
+    "build": "npx tailwindcss -i ./tailwind.style.css -o ./assets/tailwind.style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
